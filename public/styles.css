@@ -1,0 +1,250 @@
+:root {
+  --purple-deep: #1c0636;
+  --purple: #2e0b55;
+  --purple-mid: #45177a;
+  --gold: #f2c14e;
+  --gold-deep: #c9971c;
+  --red: #d6312b;
+  --white: #ffffff;
+  --text: #f3eefa;
+  --muted: #cbbde0;
+  --radius: 18px;
+  --max: 1040px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--purple-deep);
+  line-height: 1.55;
+  padding-bottom: 72px; /* room for the sticky email bar on phones */
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--gold); }
+
+h1, h2 { line-height: 1.2; margin: 0 0 0.6em; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 48px 20px 56px;
+  background:
+    radial-gradient(circle at 50% 30%, var(--purple-mid) 0%, var(--purple) 45%, var(--purple-deep) 100%);
+}
+
+.hero::before {
+  /* faint logo watermark behind the hero */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/logo.webp") center / contain no-repeat;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.logo-wrap {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 28px;
+}
+
+.logo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.45));
+}
+
+.ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  opacity: 0;
+  animation: ripple 2.8s ease-out infinite;
+}
+
+.ripple-2 { animation-delay: 1.4s; }
+
+@keyframes ripple {
+  0%   { transform: scale(0.95); opacity: 0.7; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+.hero h1 {
+  font-size: clamp(1.7rem, 5.5vw, 2.8rem);
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.lede {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 auto 28px;
+  max-width: 600px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+  color: var(--purple-deep);
+  font-weight: 800;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.btn:hover, .btn:focus-visible { filter: brightness(1.08); }
+
+a:focus-visible, .btn:focus-visible {
+  outline: 3px solid var(--white);
+  outline-offset: 3px;
+}
+
+/* ---------- Feature sections ---------- */
+main { max-width: var(--max); margin: 0 auto; padding: 8px 20px; }
+
+.feature {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+  margin: 40px 0;
+  padding: 28px 22px;
+  border-radius: var(--radius);
+  background: var(--purple);
+  border: 1px solid rgba(242, 193, 78, 0.25);
+}
+
+.feature-emergency { border-top: 6px solid var(--red); }
+.feature-service   { border-top: 6px solid var(--gold); }
+.feature-direct    { border-top: 6px solid var(--muted); }
+
+.sample { margin: 0; text-align: center; }
+.sample img { width: min(280px, 80%); margin: 0 auto; }
+.sample figcaption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.kicker {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.feature-emergency .kicker { color: #ff7a73; }
+
+.feature h2 { font-size: clamp(1.35rem, 4vw, 1.9rem); color: var(--white); }
+
+.feature p { margin: 0; }
+
+/* ---------- Steps ---------- */
+.steps { margin: 56px 0; text-align: center; }
+.steps h2 { color: var(--gold); font-size: clamp(1.4rem, 4vw, 2rem); }
+
+.steps ol {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: grid;
+  gap: 16px;
+  text-align: left;
+}
+
+.steps li {
+  position: relative;
+  padding: 20px 20px 20px 72px;
+  background: var(--purple);
+  border-radius: var(--radius);
+}
+
+.step-num {
+  position: absolute;
+  left: 20px;
+  top: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: var(--purple-deep);
+  background: var(--gold);
+}
+
+/* ---------- Contact ---------- */
+.contact {
+  text-align: center;
+  margin: 56px 0 24px;
+  padding: 32px 22px;
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, var(--purple-mid), var(--purple));
+}
+
+.contact h2 { color: var(--gold); }
+.contact p { margin: 0 0 22px; }
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 16px 20px 24px;
+}
+
+/* ---------- Sticky email bar (phones only) ---------- */
+.sticky-email {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+  color: var(--purple-deep);
+  font-weight: 800;
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* ---------- Larger screens ---------- */
+@media (min-width: 760px) {
+  body { padding-bottom: 0; }
+  .sticky-email { display: none; }
+  .hero { padding: 72px 24px 80px; }
+  .logo-wrap { width: 240px; height: 240px; }
+  .feature { grid-template-columns: 1fr 1.3fr; padding: 36px; }
+  .feature-service { grid-template-columns: 1.3fr 1fr; }
+  .feature-service .sample { order: 2; }
+  .feature-direct { grid-template-columns: 1fr; }
+  .steps ol { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---------- Respect reduced-motion settings ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .ripple { animation: none; opacity: 0; }
+}
